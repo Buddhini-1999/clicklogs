@@ -1,4 +1,4 @@
-Project: Tap Interaction Analyzer
+Project: Ckicklog- Tap Analyzer
 
 Description:
 This system tracks user tap interactions and stores data in Firebase Firestore.
