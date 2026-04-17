@@ -274,8 +274,6 @@
 				<button id="continue" onclick="startNext()">Continue</button>
 			</div>
 		</div>
-
-<!-- Firebase Config -->
 <script>
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -285,9 +283,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 </script>
-
-<!-- Analysis -->
-<script>
+		<script>
 async function analyzeSessions() {
 
   const db = firebase.firestore();
