@@ -322,8 +322,22 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-			<script>
+</script>
+		<!-- Firebase Config -->
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+firebase.initializeApp(firebaseConfig);
+</script>
+
+<!-- Analysis Code -->
+<script>
 async function analyzeSessions() {
+
   const db = firebase.firestore();
 
   const snapshot = await db.collection("tap_logs").get();
@@ -353,7 +367,6 @@ async function analyzeSessions() {
 }
 
 analyzeSessions();
-</script>
 </script>
 	</body>
 	
