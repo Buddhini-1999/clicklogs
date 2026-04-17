@@ -322,6 +322,38 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+			<script>
+async function analyzeSessions() {
+  const db = firebase.firestore();
+
+  const snapshot = await db.collection("tap_logs").get();
+
+  let sessions = {};
+
+  snapshot.forEach(doc => {
+    const data = doc.data();
+
+    if (!sessions[data.sessionId]) {
+      sessions[data.sessionId] = new Set();
+    }
+
+    sessions[data.sessionId].add(data.interfaceType);
+  });
+
+  let completed = 0;
+  let dropped = 0;
+
+  for (let s in sessions) {
+    if (sessions[s].size === 2) completed++;
+    else dropped++;
+  }
+
+  console.log("Completed users:", completed);
+  console.log("Dropped users:", dropped);
+}
+
+analyzeSessions();
+</script>
 </script>
 	</body>
 	
