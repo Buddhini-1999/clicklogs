@@ -274,46 +274,6 @@
 				<button id="continue" onclick="startNext()">Continue</button>
 			</div>
 		</div>
-		<script>
-async function analyzeSessions() {
-
-  const db = firebase.firestore();
-
-  const snapshot = await db.collection("tap_logs").get();
-
-  let sessions = {};
-
-  snapshot.forEach(doc => {
-    const data = doc.data();
-
-    const session = data.sessionId;
-    const interfaceType = data.interfaceType;
-
-    if (!sessions[session]) {
-      sessions[session] = new Set();
-    }
-
-    sessions[session].add(interfaceType);
-  });
-
-  let completed = 0;
-  let dropped = 0;
-
-  for (let session in sessions) {
-    if (sessions[session].size === 2) {
-      completed++;
-    } else {
-      dropped++;
-    }
-  }
-
-  console.log("Completed users:", completed);
-  console.log("Dropped users:", dropped);
-}
-
-// Run function
-analyzeSessions();
-</script>
 
 <!-- Firebase Config -->
 <script>
